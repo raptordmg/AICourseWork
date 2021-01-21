@@ -61,11 +61,4 @@ public class Cave {
         }
         return caveNumbers;
     }
-
-    @Override
-    public String toString() {
-        return "Cave{" +
-                "coords=" + coords +
-                '}';
-    }
 }

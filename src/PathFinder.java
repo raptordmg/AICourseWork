@@ -3,10 +3,10 @@ import java.util.*;
 import static java.lang.Math.abs;
 
 public class PathFinder {
-    private List<List<Integer>> caves;
-    private List<Integer> start;
-    private List<Integer> target;
-    private FileHandling file;
+    private final List<List<Integer>> caves;
+    private final List<Integer> start;
+    private final List<Integer> target;
+    private final FileHandling file;
 
     public PathFinder(List<List<Integer>> caves, List<Integer> start, List<Integer> target, FileHandling file) {
         this.caves = caves;

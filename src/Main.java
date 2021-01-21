@@ -1,23 +1,21 @@
+import java.util.LinkedList;
 import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
-        double startTime = System.currentTimeMillis();
-        FileHandling file = new FileHandling("generated30-1.cav");
+        FileHandling file = new FileHandling(System.getProperty("user.dir")+ "\\" + args[0]+".cav"); //Test
         List<Integer> start = file.getCaves().get(0);
         List<Integer> target = file.getCaves().get(file.getNumCaves()-1);
-
         List<Cave> optimalCoords = new PathFinder(file.getCaves(),start,target, file).findOptimalPath();
+        List<Integer> output = new LinkedList<>();
 
         if (optimalCoords != null) {
-            System.out.println(new Cave().getCaveNums(optimalCoords, file.getCaves()));
-            System.out.println(optimalCoords.size());
+            output = new Cave().getCaveNums(optimalCoords, file.getCaves());
+            file.outputResult(output);
         }else{
-            System.out.println("null");
+            output.add(0);
+            file.outputResult(output);
         }
-
-        double stopTime = System.currentTimeMillis();
-        System.out.println("Execution Time: " + ((stopTime - startTime) / 1000));
     }
 }

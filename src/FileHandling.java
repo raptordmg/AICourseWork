@@ -2,6 +2,7 @@ import org.apache.commons.collections4.ListUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -62,6 +63,20 @@ public class FileHandling {
     private void checkDataAdded() {
         if (data == null){
             openFile();
+        }
+    }
+
+    public void outputResult(List<Integer> results) {
+        try{
+            FileWriter outputFile = new FileWriter(fileName.substring(0, fileName.length()-4) + ".csn");
+            String output = "";
+            for (int result: results){
+                output = output + result + " ";
+            }
+            outputFile.write(output);
+            outputFile.close();
+        } catch (Exception e){
+            e.printStackTrace();
         }
     }
 }
